@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+ 
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+    crossorigin="anonymous"
+  />
+
+  <script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+
+<script>
+    const form = document.getElementById('facname')
+   
+    var x = "<%= getfac[0].fname %>";
+    y="hello"
+     console.log(x);
+    document.getElementById("hii").innerHTML = y;
+    
+</script>
+</script>
+
+    <title>Admin|Panel|</title>
+</head>
+
+<body>
+
+
+
+<script>
+     
+    var x = "<%= getfac[0].fname %>";
+    y="hello"
+     console.log(x);
+    document.getElementById("m").innerHTML = x;
+    
+</script>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Subjects
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/faculty">Computer Network</a>
+                <a class="dropdown-item" href="#">Machine Learning</a>
+                <a class="dropdown-item" href="#">Project Management</a>
+                <a class="dropdown-item" href="#">Database Management</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+        
+        </div>
+      </nav>
+      <h1>Welcome to Admin Dashboard</h1>    
+
+
+<!-- now creating the table -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table style="width:100%">
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Subject</th>
+    </tr>
+    
+    <tr>
+      
+      <td><%= getfac[0].fname %> </td>
+      <td><%= getfac[0].lname %></td>
+      <td><%= getfac[0].subname %></td>
+      <td> 
+        <form action="">
+            <input id="p" autocomplete="off" type="hidden"/><button onclick="chang1();" class="btn btn-outline-success my-2 my-sm-0">Send</button>
+      </form>
+        </form>
+    </tr>
+    <tr>
+      
+        <td><%= getfac[1].fname %> </td>
+        <td><%= getfac[1].lname %></td>
+        <td><%= getfac[1].subname %></td>
+        <td> 
+            <form action="">
+                <input id="o" autocomplete="off" type="hidden"/><button onclick="chang2();" class="btn btn-outline-success my-2 my-sm-0">Send</button>
+          </form>
+      </tr>
+      <tr>
+      
+        <td><%= getfac[2].fname %> </td>
+        <td><%= getfac[2].lname %></td>
+        <td><%= getfac[2].subname %></td>
+        <td> 
+            <form action="">
+                <input id="n" autocomplete="off" type="hidden"/><button onclick="channg();" class="btn btn-outline-success my-2 my-sm-0">Send</button>
+          </form>
+      </tr>
+      <tr>
+      
+        <td><%= getfac[3].fname %> </td>
+        <td><%= getfac[3].lname %></td>
+        <td><%= getfac[3].subname %></td>
+        <td> 
+            <form action="">
+                <input id="m" autocomplete="off" type="hidden"/><button onclick="chang();" class="btn btn-outline-success my-2 my-sm-0">Send</button>
+          </form>
+          
+      </tr>
+  </table>
+
+
+  <script>
+    $(function () {
+         var socket = io();
+         $('form').submit(function(){
+         socket.emit('chat message', $('#m').val());
+         $('#m').val('');
+         return false;
+         });
+     });
+     $(function () {
+         var socket = io();
+         $('form').submit(function(){
+         socket.emit('chat message', $('#n').val());
+         $('#n').val('');
+         return false;
+         });
+     });
+     $(function () {
+         var socket = io();
+         $('form').submit(function(){
+         socket.emit('chat message', $('#o').val());
+         $('#o').val('');
+         return false;
+         });
+     });
+     $(function () {
+         var socket = io();
+         $('form').submit(function(){
+         socket.emit('chat message', $('#p').val());
+         $('#p').val('');
+         return false;
+         });
+     });
+     
+
+     //Setting the default value as faculty first name
+     function chang(){
+        let x = "<%= getfac[3].fname %>"
+        document.getElementById("m").defaultValue = x; 
+    }
+    function channg(){
+        let y = "<%= getfac[2].fname %>"
+        document.getElementById("n").defaultValue = y; 
+    }
+    function chang1(){
+        let z = "<%= getfac[0].fname %>"
+        document.getElementById("p").defaultValue = z; 
+    }
+    function chang2(){
+        let o = "<%= getfac[1].fname %>"
+        document.getElementById("o").defaultValue = o; 
+    }
+
+     //function chng(){
+         
+      // var x = "<%= getfac[3].fname %>";
+       //document.getElementById("m").value= x;
+        //};
+ </script>
+ <!--
+    <% for(let i=0; i<getfac.length; i++){ %>
+   <h1> <%= getfac[i].fname %>  </h1>
+   <% } %>
+    -->
+
+
+
+  
+</body>
+</html>
